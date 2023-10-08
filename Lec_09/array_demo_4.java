@@ -10,3 +10,4 @@ public class array_demo_4 {
 		System.out.println(a2[0]);
 	}
 }
+	
