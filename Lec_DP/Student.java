@@ -1,6 +1,6 @@
-package Lec_OOPs_Part2;
+package Lec_DP;
 
-public class Student implements Comparable<Student> {
+public class Student{
 	int Age;
 	String Name;
 	static int total_S = 2;
@@ -25,16 +25,7 @@ public class Student implements Comparable<Student> {
 
 	@Override
 	public String toString() {
-		return Name + ", " + Age;
+		return "{"+Name + ", " + Age+"}";
 	}
 
-	@Override
-	public int compareTo(Student o) {
-//		s1.copmapreTo(s2)
-//		s1- s2
-//		this = s1 , o= s2;
-		return this.Age - o.Age;
-//		return o.Age - .Age;
-
-	}
 }
