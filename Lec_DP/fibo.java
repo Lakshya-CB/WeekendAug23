@@ -2,9 +2,9 @@ package Lec_DP;
 
 public class fibo {
 	public static void main(String[] args) {
-		int n = 60000;
-//		System.out.println(FiboTD(n, new Integer[n + 1]));
-		System.out.println(FibBU(n));
+		int n = 50000;
+		System.out.println(FiboTD(n, new Integer[n + 1]));
+//		System.out.println(FibBU(n));
 	}
 
 	public static int Fibo(int n) {
