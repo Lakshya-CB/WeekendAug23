@@ -3,9 +3,10 @@ package Lec_DP;
 public class coin_change {
 	public static void main(String[] args) {
 		int[] coins = { 1, 2, 3 };
-		int A = 6000;
-		System.out.println(solve(0, A, coins, new Integer[coins.length + 10][A + 10]));
+		int A = 60000;
+//		System.out.println(solve(0, A, coins, new Integer[coins.length + 10][A + 10]));
 		System.out.println(BU(A, coins));
+		System.out.println(aBUSE(A, coins));	
 	}
 
 	public static int solve(int idx, int A, int[] coins) {
@@ -39,7 +40,7 @@ public class coin_change {
 	}
 
 	public static int BU(int Amount, int[] coins) {
-		int[][] dp = new int[coins.length ][Amount + 1];
+		int[][] dp = new int[coins.length][Amount + 1];
 		for (int A = 0; A <= Amount; A++) {
 			for (int idx = coins.length - 1; idx >= 0; idx--) {
 				if (A == 0) {
@@ -64,4 +65,37 @@ public class coin_change {
 		}
 		return dp[0][Amount];
 	}
+
+	public static int aBUSE(int Amount, int[] coins) {
+//		int[][] dp = new int[coins.length ][Amount + 1];
+		int[] dp_curr = new int[Amount + 1];
+		int[] dp_prev = new int[Amount + 1];
+
+		for (int idx = coins.length - 1; idx >= 0; idx--) {
+			for (int A = 0; A <= Amount; A++) {
+				if (A == 0) {
+//					System.out.println(str);
+					dp_curr[A] = 1;
+					continue;
+				}
+				if (idx == coins.length) {
+					return 0;
+				}
+//				dp[idx][A]!!
+				int sp1 = 0;
+				if (A - coins[idx] >= 0) {
+					sp1 = dp_curr[A - coins[idx]];
+				}
+				int sp2 = 0;
+				if (idx + 1 < coins.length) {
+					sp2 = dp_prev[A];
+				}
+				dp_curr[A] = sp1 + sp2;
+			}
+			dp_prev = dp_curr;
+			dp_curr = new int[Amount+1];
+		}
+		return dp_prev[Amount];
+	}
+
 }

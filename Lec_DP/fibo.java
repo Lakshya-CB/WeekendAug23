@@ -44,4 +44,20 @@ public class fibo {
 		return dp[N];
 
 	}
+	public static int aBUSE(int N) {
+		if(N<=1) {
+			return N;
+		}
+		int pre1 = 1;
+		int pre2 = 0;
+		for (int n = 2; n <= N; n++) {			
+			int sp1 = pre1;
+			int sp2 = pre2;
+			int curr = sp1 + sp2;
+			pre2 = pre1;
+			pre1 = curr;
+		}
+		return pre1;
+
+	}
 }
